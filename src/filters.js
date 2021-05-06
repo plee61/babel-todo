@@ -15,15 +15,15 @@ const filters = {
     sortBy: 'edited-R'
 }
 const getFilters = () => filters
-const setFilters = (updates) => {
-    if (typeof updates.searchText === 'string'){
-        filters.searchText = updates.searchText
+const setFilters = ({searchText, hideCompleted, sortBy}) => { //destructuring filters
+    if (typeof searchText === 'string'){
+        filters.searchText = searchText
     }
-    if (typeof updates.hideCompleted === 'boolean'){
-        filters.hideCompleted = updates.hideCompleted
+    if (typeof hideCompleted === 'boolean'){
+        filters.hideCompleted = hideCompleted
     }
-    if (typeof updates.sortBy === 'string') {
-        filters.sortBy = updates.sortBy
+    if (typeof sortBy === 'string') {
+        filters.sortBy = sortBy
     }
 }
 export {getFilters, setFilters}

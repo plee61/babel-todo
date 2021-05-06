@@ -11,8 +11,9 @@ const renderTodos = () => {
     if (!todos ) {return}
     const todoEl = document.querySelector('#todos-div')
     todoEl.innerHTML = ""
-    const hide = getFilters().hideCompleted
-    const search = getFilters().searchText.toLowerCase()
+    const {searchText, hideCompleted} = getFilters() //destructuring filters
+    // const hide = getFilters().hideCompleted
+    // const search = getFilters().searchText.toLowerCase()
     // todos.forEach((todo) => { 
     //    if (!hide || !(hide && todo.completed)) {
     //        if (todo.todoText.toLowerCase().includes(search)){
@@ -22,8 +23,8 @@ const renderTodos = () => {
     //    }
     // })
     const filteredTodos = todos.filter((todo) => { 
-       const hideMatch = !hide || !todo.completed
-       const searchMatch = todo.todoText.toLowerCase().includes(search)
+       const hideMatch = !hideCompleted || !todo.completed
+       const searchMatch = todo.todoText.toLowerCase().includes(searchText)
        return hideMatch && searchMatch
     })
     const summaryEl = document.querySelector('#todo-completed')
